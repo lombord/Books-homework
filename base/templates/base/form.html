@@ -1,0 +1,26 @@
+{% extends 'base_box.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% block title %}
+  {{ title|default:"Form" }}
+{% endblock title %}
+{% block box_content %}
+  <div class="p-4">
+    <form action="" method="post">
+      {% csrf_token %}
+      {% if form %}
+        {% bootstrap_form form %}
+      {% endif %}
+      <div class="text-end">
+        <button type="submit" class="btn px-4 fs-5 btn-primary text-capitalize">
+          {{ submit|default:'submit' }}
+        </button>
+        <a class="btn px-4 fs-5 btn-secondary"
+           href="{{ request.META.HTTP_REFERER }}">Back</a>
+      </div>
+    </form>
+  </div>
+{% endblock box_content %}
+{% block js %}
+  <script src="{% static 'base/js/form.js' %}"></script>
+{% endblock js %}

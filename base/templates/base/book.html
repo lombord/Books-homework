@@ -1,0 +1,35 @@
+{% extends 'base_box.html' %}
+{% load custom_tags %}
+{% block title %}
+  {{ book.name }}
+{% endblock title %}
+{% block box_content %}
+  <div>
+    <h1>
+      {{ book.name }}
+    </h1>
+    <ul>
+      <li>
+        <strong>Author</strong>: {{ book.author }}
+      </li>
+      <li>
+        <strong>Published year</strong>: {{ book.published_year }}
+      </li>
+      <li>
+        <strong>Genre</strong>: {{ book.genre }}
+      </li>
+      <li>
+        <strong>Rating</strong>: {{ book.rating }}
+      </li>
+      <li>
+        <strong>Views</strong>: {{ book.views }}
+      </li>
+    </ul>
+    <div class="d-flex justify-content-end gap-2 flex-wrap">
+      <a class="btn px-4 fs-5 btn-primary"
+         href="{{ book|get_url:'edit_book' }}">Edit</a>
+      <a class="btn px-4 fs-5 btn-danger"
+         href="{{ book|get_url:'delete_book' }}">Delete</a>
+    </div>
+  </div>
+{% endblock box_content %}
